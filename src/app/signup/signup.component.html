@@ -1,0 +1,84 @@
+<section class="container w-50 text-center" *ngIf="tosigninloading">
+  <form [formGroup]="signupform" (ngSubmit)="signupvalue(signupform)">
+    <h2 class="mb-5">Angular CRUD signup</h2>
+    <section class="form-outline mb-4">
+      <input type="text" id="registerName" class="form-control border border-primary border-top-0" formControlName="name"/>
+      <label class="form-label" for="registerName">Name</label>
+    </section>
+    <section *ngIf="signupform.get('name')?.errors && signupform.get('name')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signupform.get('name')?.getError('required')">Name is required</p>
+      <p *ngIf="signupform.get('name')?.getError('minlength')">
+        The actual length is : {{signupform.get('name')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('name')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signupform.get('name')?.getError('maxlength')">
+        The actual length is : {{signupform.get('name')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('name')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+    <section class="form-outline mb-4">
+      <input type="text" id="registerUsername" class="form-control border border-primary border-top-0" formControlName="username"/>
+      <label class="form-label" for="registerUsername">Username</label>
+    </section>
+    <section *ngIf="signupform.get('username')?.errors && signupform.get('username')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signupform.get('username')?.getError('required')">UserName is required</p>
+      <p *ngIf="signupform.get('username')?.getError('minlength')">
+        The actual length is : {{signupform.get('username')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('username')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signupform.get('username')?.getError('maxlength')">
+        The actual length is : {{signupform.get('username')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('username')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+    <section class="form-outline mb-4">
+      <input type="email" id="registerEmail" class="form-control border border-primary border-top-0" formControlName="email"/>
+      <label class="form-label" for="registerEmail">Email</label>
+    </section>
+    <section *ngIf="signupform.get('email')?.errors && signupform.get('email')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signupform.get('email')?.getError('required')">E-mail is required</p>
+      <p *ngIf="signupform.get('email')?.getError('email')">E-mail is incorrect</p>
+    </section>
+
+
+
+    <section class="form-outline mb-4">
+      <input type="password" id="registerPassword" class="form-control border border-primary border-top-0" formControlName="password"/>
+      <label class="form-label" for="registerPassword">Password</label>
+    </section>
+    <section *ngIf="signupform.get('password')?.errors && signupform.get('password')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signupform.get('password')?.getError('required')">password is required</p>
+      <p *ngIf="signupform.get('password')?.getError('minlength')">
+        The actual length is : {{signupform.get('password')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('password')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signupform.get('password')?.getError('maxlength')">
+        The actual length is : {{signupform.get('password')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('password')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+
+    <section class="form-outline mb-5">
+      <input type="password" id="registerRepeatPassword" class="form-control border border-primary border-top-0" formControlName="repeatpassword"/>
+      <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+    </section>
+    <section *ngIf="signupform.get('repeatpassword')?.errors && signupform.get('repeatpassword')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signupform.get('repeatpassword')?.getError('required')">password is required</p>
+      <p *ngIf="signupform.get('repeatpassword')?.getError('minlength')">
+        The actual length is : {{signupform.get('repeatpassword')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('repeatpassword')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signupform.get('repeatpassword')?.getError('maxlength')">
+        The actual length is : {{signupform.get('repeatpassword')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signupform.get('repeatpassword')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+
+    <button type="submit" class="btn btn-primary btn-block mb-3" [disabled]="signupform.invalid">Sign up</button>
+  </form>
+</section>
+<app-signin *ngIf="tosigninunloading"></app-signin>

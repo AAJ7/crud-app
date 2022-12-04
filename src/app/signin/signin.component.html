@@ -1,0 +1,47 @@
+<section class="container w-50 text-center" *ngIf="tosignuploading && tocrudloading">
+  <h2 class="mb-5">Angular CRUD signin</h2>
+  <form [formGroup]="signinform" (ngSubmit)="signinvalue(signinform)">
+    <section class="form-outline mb-4">
+      <input type="text" id="form2Example1" class="form-control border border-primary border-top-0" formControlName = "username"/>
+      <label class="form-label" for="form2Example1">username</label>
+    </section>
+    <section *ngIf="signinform.get('username')?.errors && signinform.get('username')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signinform.get('username')?.getError('required')">UserName is required</p>
+      <p *ngIf="signinform.get('username')?.getError('minlength')">
+        The actual length is : {{signinform.get('username')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signinform.get('username')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signinform.get('username')?.getError('maxlength')">
+        The actual length is : {{signinform.get('username')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signinform.get('username')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+
+
+
+    <section class="form-outline mb-5">
+      <input type="password" id="form2Example2" class="form-control border border-primary border-top-0" formControlName = "password"/>
+      <label class="form-label" for="form2Example2">Password</label>
+    </section>
+    <section *ngIf="signinform.get('password')?.errors && signinform.get('password')?.touched" class="alert alert-danger m-3">
+      <p *ngIf="signinform.get('password')?.getError('required')">password is required</p>
+      <p *ngIf="signinform.get('password')?.getError('minlength')">
+        The actual length is : {{signinform.get('password')?.getError('minlength')['actualLength']}} <br/>
+        The required length is : {{signinform.get('password')?.getError('minlength')['requiredLength']}}
+      </p>
+      <p *ngIf="signinform.get('password')?.getError('maxlength')">
+        The actual length is : {{signinform.get('password')?.getError('maxlength')['actualLength']}} <br/>
+        The required length is : {{signinform.get('password')?.getError('maxlength')['requiredLength']}}
+      </p>
+    </section>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+    <section class="text-center">
+      <p>Not a member? <a href="#!" (click)="tosignup()">Register</a></p>
+  </section>
+  </form>
+</section>
+<app-signup *ngIf="tosignupunloading"></app-signup>
+<app-crud *ngIf="tocrudunloading"></app-crud>

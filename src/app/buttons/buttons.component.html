@@ -1,0 +1,7 @@
+<section class="container text-center" *ngIf="signinloading && signuploading">
+  <h1 class="mb-5">Angular CRUD</h1>
+<button class="btn btn-success me-3" (click)="confirmsignin()">signin</button>
+<button class="btn btn-danger" (click)="confirmsignup()">signup</button>
+</section>
+<app-signin *ngIf="signinunloading"></app-signin>
+<app-signup *ngIf="signupunloading"></app-signup>

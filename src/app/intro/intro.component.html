@@ -1,0 +1,5 @@
+<section class="container text-center" *ngIf="loading">
+  <h1 class="mb-5">Angular CRUD</h1>
+  <button class="btn btn-info" (click)="confirm()">Get Started</button>
+</section>
+<app-buttons *ngIf="unloading"></app-buttons>
